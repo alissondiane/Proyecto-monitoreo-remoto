@@ -11,7 +11,7 @@
     "materialize-social": "^1.0.3",
     "react": "^16.3.2",
     "react-alice-carousel": "^1.15.3",
-    "react-dom": "^16.3.2",
+    "react-dom": "^16.3.3",
     "react-fusioncharts": "^3.0.1",
     "react-gauge-chart": "^0.2.5",
     "react-google-charts": "^3.0.15",
