@@ -9,6 +9,7 @@ import DetalleProyecto from './Componentes/Detalle-Proyecto';
 import RegistroProyecto from './Componentes/Registro-Proyecto';
 import Historico from './Componentes/Historico';
 import MantenimientoCultivo from './Componentes/Mantenimiento-Cultivos';
+import LoginForm from './Componentes/LoginForm';
 
 
 class Index extends React.Component {
@@ -27,7 +28,7 @@ class Index extends React.Component {
             <div>
             <Router history={browserHistory}>
             <Route
-                component={() => <VistaInicio />}
+                component={() => <LoginForm />}
                 path="/">
             </Route>
             <Route path="/Vista/Inicio" component={VistaInicio}></Route>
@@ -35,6 +36,7 @@ class Index extends React.Component {
             <Route path="/Registro/proyecto" component={RegistroProyecto}></Route>
             <Route path="/Mantenimiento-Cultivo" component={MantenimientoCultivo}></Route>
             <Route path="/Historico-Cultivo" component={Historico}></Route>
+            <Route path="/login" component={LoginForm}></Route>
           </Router>
           </div>
           )

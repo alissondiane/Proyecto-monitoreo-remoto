@@ -7,13 +7,21 @@ import DATACHART1 from './Data-Chart';
 import DATACHART2 from './Data-Chart2';
 import DATACHART3 from './Data-Chart3';
 import ModalDetalleCultivo from './ModalDetalleCultivo';
- 
+import SelectCultivo from './SelectCultivo';
+import DATASELECT from './DataSelectCultivos';
+import DETALLEGRAFICOACTUAL from './DataDetalleGraficoActual';
+import ChartActual from './ChartActual';
+import TablaDetalleGraficoActual from './TableDetalleGraficoActual';
+
 class VistaInicio extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            DATACHART: []
+            DATACHART: [],
+            idCultivo: 0,
+            nombreCultivo:''
         }
+        this.OpcionSeleccionadaCultivo = this.OpcionSeleccionadaCultivo.bind(this);
     }
     componentWillMount() {
 
@@ -58,36 +66,100 @@ class VistaInicio extends React.Component {
                 console.error(error)
             });
     }
+    OpcionSeleccionadaCultivo(opcion) {
+        if (opcion != null) {
+            console.log("Opcion seleccionada cultivo");
+            console.log(opcion);
+            console.log(opcion.value);
+            this.setState({ idCultivo: opcion.value,nombreCultivo:opcion.label });
+        }
+    }
+
     render() {
         const { nombres, isLoading, isValid } = this.state;
-
         return (
-            <div className="">
-
+            <div>
                 <div className="nav-wrapper navLogo">
                     <a href="#" data-target="slide-out" className="sidenav-trigger">
                         <i className="material-icons">menu</i>
                     </a>
                 </div>
                 <Sidebar />
-                <div class="container">
+                <div className="container">
                     <div className="row">
-                        <div class="headDetalleProyecto">
+                        <div className="headDetalleProyecto">
                             <p>Monitoreo Cultivo</p>
-                            <div class="divider"></div>
+                            <div className="divider"></div>
+                        </div>
+                        <div className="SeccionCabecera">
+                            <p>Búsqueda</p>
                         </div>
                     </div>
-                    <div class="row">
-                      
-                          <ChartExample title="MONITOREO DE TEMPERATURA" data={DATACHART1}/>
-                          <ChartExample title="MONITOREO DE OXIGENO DISUELTO" data={DATACHART2}/>
-                          <ChartExample title="MONITOREO DE PH" data={DATACHART3}/>
+                    <div className="row">
+                        <div className="col s12 m12 l6">
+                            <SelectCultivo listado={DATASELECT} Opcion={this.OpcionSeleccionadaCultivo} />
+                        </div>
+                        <div className="col s12 m12 l6">
+                            <button class="btn waves-effect waves-light grey darken-3" type="submit" name="action">Buscar
+                            <i class="material-icons right">search</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="SeccionCabecera">
+                            <p>Gráficos {this.state.nombreCultivo}</p>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col s12 m12 l6">
+                            <ChartActual lower={0} upper={50} unidad={"°C"} title={"Monitoreo de temperatura"} minValue={25} maxValue={30} valor={25}/>
+                        </div>
+                        <div class="col s12 m12 l6">
+                            <table class="highlight">
+                                <thead>
+                                    <tr>
+                                        <th>RANGO</th>
+                                        <th>ESTADO</th>
+                                        <th>COLOR</th>
+                                    </tr>
+                                </thead>
+                                <TablaDetalleGraficoActual listado={DETALLEGRAFICOACTUAL.temperatura} />
+                            </table>
+                        </div>
+                        <div className="col s12 m12 l6">
+                            <ChartActual lower={60} upper={150} unidad={"db"} title={"Monitoreo de oxigeno disuelto"} minValue={80} maxValue={120}  valor={28}/>
+                        </div>
+                        <div class="col s12 m12 l6">
+                            <table class="highlight">
+                                <thead>
+                                    <tr>
+                                        <th>RANGO</th>
+                                        <th>ESTADO</th>
+                                        <th>COLOR</th>
+                                    </tr>
+                                </thead>
+                                <TablaDetalleGraficoActual listado={DETALLEGRAFICOACTUAL.oxigeno} />
+                            </table>
+                        </div>
+                        <div className="col s12 m12 l6">
+                            <ChartActual lower={0} upper={14} unidad={"ph"} title={"Monitoreo de PH"} minValue={5} maxValue={7}  valor={6.7}/>
+                        </div>
+                        <div class="col s12 m12 l6">
+                            <table class="highlight">
+                                <thead>
+                                    <tr>
+                                        <th>RANGO</th>
+                                        <th>ESTADO</th>
+                                        <th>COLOR</th>
+                                    </tr>
+                                </thead>
+                                <TablaDetalleGraficoActual listado={DETALLEGRAFICOACTUAL.ph} />
+                            </table>
+                        </div>
                     </div>
                 </div>
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-                <ModalDetalleCultivo/>
                 <Footer />
-            </div>
+            </div>    
         );
     }
 }
