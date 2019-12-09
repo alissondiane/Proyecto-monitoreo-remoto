@@ -9,7 +9,7 @@ class ChartExample extends React.Component {
   render() {
     return (
       <div class="col s12 m12">
-        <div class="card z-depth-3">
+        <div class="card-panel hoverable">
           <div class="card-content gray-text">
             <span class="card-title">{this.props.title}</span>
             <div class="divider"></div>

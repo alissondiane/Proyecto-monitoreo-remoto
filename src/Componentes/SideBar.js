@@ -12,20 +12,32 @@ class Sidebar extends Component {
             edge: "left",
             inDuration: 250
         });
-        this.VistaMantenimientoCultivo= this.VistaMantenimientoCultivo.bind(this);
         this.VistaMonitoreo= this.VistaMonitoreo.bind(this);
         this.VistaHistoricoCultivo= this.VistaHistoricoCultivo.bind(this);
+        this.VistaMantenimientoCultivo= this.VistaMantenimientoCultivo.bind(this);
+        this.VistaMantenimientoEstanque= this.VistaMantenimientoEstanque.bind(this);
+        this.VistaMantenimientoEspecie= this.VistaMantenimientoEspecie.bind(this);
+
     }
-    VistaMantenimientoCultivo = (e) => {
-        browserHistory.push('/Mantenimiento-Cultivo');
-        e.preventDefault();
-    }
+   
     VistaMonitoreo = (e) => {
         browserHistory.push('/Vista/Inicio');
         e.preventDefault();
     }
     VistaHistoricoCultivo = (e) => {
         browserHistory.push('/Historico-Cultivo');
+        e.preventDefault();
+    }
+    VistaMantenimientoCultivo = (e) => {
+        browserHistory.push('/Mantenimiento-Cultivo');
+        e.preventDefault();
+    }
+    VistaMantenimientoEstanque = (e) => {
+        browserHistory.push('/Mantenimiento-Estanque');
+        e.preventDefault();
+    }
+    VistaMantenimientoEspecie= (e) => {
+        browserHistory.push('/Mantenimiento-Especie');
         e.preventDefault();
     }
     render() {
@@ -51,13 +63,18 @@ class Sidebar extends Component {
                             </a>
                         </li>
                         <li>
-                            <a onClick={this.VistaMantenimientoCultivo}>
-                                <i  className="material-icons">label</i>Mantenimiento Cultivos
+                            <a onClick={this.VistaMantenimientoEstanque}>
+                                <i  className="material-icons">mode_edit</i>Mantenimiento Estanques
                             </a>
                         </li>
                         <li>
-                            <a href="#!">
-                                <i className="material-icons">label</i>Mantenimiento Especies
+                            <a onClick={this.VistaMantenimientoCultivo}>
+                                <i className="material-icons">mode_edit</i>Mantenimiento Cultivos
+                            </a>
+                        </li>
+                        <li>
+                            <a onClick={this.VistaMantenimientoEspecie}>
+                                <i className="material-icons">mode_edit</i>Mantenimiento Especies
                             </a>
                         </li>
                 </ul>

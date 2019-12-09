@@ -2,7 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
-class SelectCultivo extends React.Component {
+class SelectElegir extends React.Component {
   constructor(props) {
     super(props)
     this.state = { 
@@ -32,4 +32,4 @@ class SelectCultivo extends React.Component {
   }
 }
 
-export default SelectCultivo;
+export default SelectElegir;

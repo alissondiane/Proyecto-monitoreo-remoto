@@ -1,12 +1,12 @@
 import React from 'react';
 import Footer from './Footer';
 import Sidebar from './SideBar';
-import MantenimientoTableCultivo from './Mantenimiento-TableCultivo';
-import CULTIVOS from './Data-Cultivos';
+import MantenimientoTable from './Mantenimiento-Table';
+import ESTANQUES from './Data-Estanques';
 import swal from 'sweetalert'
-import ModalRegistrarCultivo from './ModalRegistrarCultivo';
+import ModalRegistrarEstanque from './ModalRegistrarEstanque';
 
-class MantenimientoCultivo extends React.Component {
+class MantenimientoEstanques extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,7 +18,7 @@ class MantenimientoCultivo extends React.Component {
     }
     onSubmit=(e)=>{
         this.setState({ nombreEstanqueActual: this.state.nombreEstanque});
-        swal("Agregar Cultivo!", "", "success");
+        swal("Agregar Estanque!", "", "success");
     }
     render() {
         const { nombres, isLoading, isValid } = this.state;
@@ -35,7 +35,7 @@ class MantenimientoCultivo extends React.Component {
                 <div class="container">
                     <div className="row">
                     <div class="headDetalleProyecto">
-                    <p>Mantenimiento Cultivos</p>
+                    <p>Mantenimiento Estanques</p>
                     <div class="divider"></div>
                     </div>
                     </div>
@@ -46,19 +46,21 @@ class MantenimientoCultivo extends React.Component {
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Especie</th>
-                            <th>Etapa</th>
+                            <th>Capacidad</th>
+                            <th>Cultivo</th>
                             <th>Opciones</th>
                         </tr>
                     </thead>
-                   <MantenimientoTableCultivo listado={CULTIVOS}/>
+                  <MantenimientoTable listado={ESTANQUES}/>
                 </table>
                 </div>
                 </div>
                 <div class="row">
+                    
                     <div  class="col s7 push-s5">
-                        <ModalRegistrarCultivo/>
-                        <button data-target="modal2" class="btn modal-trigger grey darken-3">Agregar<i class="material-icons right">add_box</i></button>
+                    <ModalRegistrarEstanque/>
+                    <button data-target="modal1" class="btn modal-trigger grey darken-3">Agregar<i class="material-icons right">add_box</i></button>
+
                     </div>              
                 </div>                
                 </div>
@@ -69,4 +71,4 @@ class MantenimientoCultivo extends React.Component {
     }
 }
 
-export default MantenimientoCultivo;
+export default MantenimientoEstanques;

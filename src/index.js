@@ -10,6 +10,8 @@ import RegistroProyecto from './Componentes/Registro-Proyecto';
 import Historico from './Componentes/Historico';
 import MantenimientoCultivo from './Componentes/Mantenimiento-Cultivos';
 import LoginForm from './Componentes/LoginForm';
+import MantenimientoEstanques from './Componentes/Mantenimiento-Estanques';
+import MantenimientoEspecie from './Componentes/Mantenimiento-Especie';
 
 
 class Index extends React.Component {
@@ -35,6 +37,8 @@ class Index extends React.Component {
             <Route path="/Detalle/:id" component={DetalleProyecto}></Route>
             <Route path="/Registro/proyecto" component={RegistroProyecto}></Route>
             <Route path="/Mantenimiento-Cultivo" component={MantenimientoCultivo}></Route>
+            <Route path="/Mantenimiento-Estanque" component={MantenimientoEstanques}></Route>
+            <Route path="/Mantenimiento-Especie" component={MantenimientoEspecie}></Route>
             <Route path="/Historico-Cultivo" component={Historico}></Route>
             <Route path="/login" component={LoginForm}></Route>
           </Router>

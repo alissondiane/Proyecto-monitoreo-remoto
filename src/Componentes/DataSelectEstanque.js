@@ -1,4 +1,4 @@
-const DATASELECT= [
+const DATASELECTESTANQUE= [
     { value: 1, label: 'Estanque 1' },
     { value: 2, label: 'Estanque 2' },
     { value: 3, label: 'Estanque 3' },
@@ -7,4 +7,4 @@ const DATASELECT= [
    ]
 ;
   
-  export default DATASELECT;
+  export default DATASELECTESTANQUE;

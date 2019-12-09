@@ -6,73 +6,43 @@ import ChartExample from './Chart';
 import DATACHART1 from './Data-Chart';
 import DATACHART2 from './Data-Chart2';
 import DATACHART3 from './Data-Chart3';
-import ModalDetalleCultivo from './ModalDetalleCultivo';
-import SelectCultivo from './SelectCultivo';
-import DATASELECT from './DataSelectCultivos';
+import SelectElegir from './SelectElegir';
+import DATASELECTESTANQUE from './DataSelectEstanque';
 import DETALLEGRAFICOACTUAL from './DataDetalleGraficoActual';
 import ChartActual from './ChartActual';
 import TablaDetalleGraficoActual from './TableDetalleGraficoActual';
+import swal from 'sweetalert'
 
 class VistaInicio extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             DATACHART: [],
-            idCultivo: 0,
-            nombreCultivo:''
+            idEstanque: 0,
+            nombreEstanque: '',
+            nombreEstanqueActual: '',
+            count : 25
         }
         this.OpcionSeleccionadaCultivo = this.OpcionSeleccionadaCultivo.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.getRandomArbitrary = this.getRandomArbitrary.bind(this);
     }
     componentWillMount() {
-
-        fetch('https://hackatonesan.herokuapp.com/proyecto/list',
-            {
-                headers: {
-                    'Accept': 'application/json',
-                },
-                method: 'GET'
-            }
-        )
-            .then((response) => {
-                console.log("Respuesta de JSON")
-                return response.json();
-            })
-            .then((alumno) => {
-                console.log("Realizando la consulta");
-                console.log(alumno);
-                var listado = alumno;
-                var proyecto = [];
-
-                for (let i = 0; i < listado.length; i++) {
-                    var id = listado[i].id;
-                    var nombre = listado[i].nombre;
-                    var categoria = listado[i].categoria;
-                    var categorias = []
-                    for (let i = 0; i < categoria.length; i++) {
-                        var nombreCat = categoria[i];
-                        var opcion = { nombre: nombreCat };
-                        categorias.push(opcion);
-                    }
-                    var link = listado[i].link;
-                    var option = { id: id, nombre: nombre, categoria: categorias, link: link };
-                    proyecto.push(option);
-                }
-                console.log(proyecto)
-                this.setState({ vehiculos: proyecto })
-
-            })
-            .catch(error => {
-                // si hay algún error lo mostramos en consola
-                console.error(error)
-            });
+    }
+    getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
     }
     OpcionSeleccionadaCultivo(opcion) {
         if (opcion != null) {
-            console.log("Opcion seleccionada cultivo");
+            console.log("Opcion seleccionada de Estanque");
             console.log(opcion);
             console.log(opcion.value);
-            this.setState({ idCultivo: opcion.value,nombreCultivo:opcion.label });
+            this.setState({ idEstanque: opcion.value, nombreEstanque: opcion.label });
         }
+    }
+    onSubmit = (e) => {
+        this.setState({ nombreEstanqueActual: this.state.nombreEstanque });
+        swal("Busqueda realizada exitosamente!", "", "success");
     }
 
     render() {
@@ -97,22 +67,22 @@ class VistaInicio extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col s12 m12 l6">
-                            <SelectCultivo listado={DATASELECT} Opcion={this.OpcionSeleccionadaCultivo} />
+                            <SelectElegir listado={DATASELECTESTANQUE} Opcion={this.OpcionSeleccionadaCultivo} />
                         </div>
                         <div className="col s12 m12 l6">
-                            <button class="btn waves-effect waves-light grey darken-3" type="submit" name="action">Buscar
+                            <button onClick={this.onSubmit} class="btn waves-effect waves-light grey darken-3" type="submit" name="action">Buscar
                             <i class="material-icons right">search</i>
                             </button>
                         </div>
                     </div>
                     <div className="row">
                         <div className="SeccionCabecera">
-                            <p>Gráficos {this.state.nombreCultivo}</p>
+                            <p>Gráficos {this.state.nombreEstanqueActual}</p>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col s12 m12 l6">
-                            <ChartActual lower={0} upper={50} unidad={"°C"} title={"Monitoreo de temperatura"} minValue={25} maxValue={30} valor={25}/>
+                            <ChartActual lower={0} upper={50} unidad={"°C"} title={"Monitoreo de temperatura"} minValue={25} maxValue={30} valor={this.getRandomArbitrary(0, 50)} />
                         </div>
                         <div class="col s12 m12 l6">
                             <table class="highlight">
@@ -127,7 +97,7 @@ class VistaInicio extends React.Component {
                             </table>
                         </div>
                         <div className="col s12 m12 l6">
-                            <ChartActual lower={60} upper={150} unidad={"db"} title={"Monitoreo de oxigeno disuelto"} minValue={80} maxValue={120}  valor={28}/>
+                            <ChartActual lower={60} upper={150} unidad={"db"} title={"Monitoreo de oxigeno disuelto"} minValue={80} maxValue={120} valor={this.getRandomArbitrary(60, 150)} />
                         </div>
                         <div class="col s12 m12 l6">
                             <table class="highlight">
@@ -142,7 +112,7 @@ class VistaInicio extends React.Component {
                             </table>
                         </div>
                         <div className="col s12 m12 l6">
-                            <ChartActual lower={0} upper={14} unidad={"ph"} title={"Monitoreo de PH"} minValue={5} maxValue={7}  valor={6.7}/>
+                            <ChartActual lower={0} upper={14} unidad={"ph"} title={"Monitoreo de PH"} minValue={5} maxValue={7} valor={this.getRandomArbitrary(0, 14)} />
                         </div>
                         <div class="col s12 m12 l6">
                             <table class="highlight">
@@ -159,7 +129,7 @@ class VistaInicio extends React.Component {
                     </div>
                 </div>
                 <Footer />
-            </div>    
+            </div>
         );
     }
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import Footer from './Footer';
 import Sidebar from './SideBar';
-import MantenimientoTableCultivo from './Mantenimiento-TableCultivo';
-import CULTIVOS from './Data-Cultivos';
+import MantenimientoTableEspecie from './Mantenimiento-TableEspecie';
+import ESPECIES from './Data-Especie';
 import swal from 'sweetalert'
-import ModalRegistrarCultivo from './ModalRegistrarCultivo';
+import ModalRegistrarEspecie from './ModalRegistrarEspecie';
 
-class MantenimientoCultivo extends React.Component {
+class MantenimientoEspecie extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -35,30 +35,19 @@ class MantenimientoCultivo extends React.Component {
                 <div class="container">
                     <div className="row">
                     <div class="headDetalleProyecto">
-                    <p>Mantenimiento Cultivos</p>
+                    <p>Mantenimiento Especies</p>
                     <div class="divider"></div>
                     </div>
                     </div>
                     <div class="row">
-                        <div class="card-panel hoverable col s12 m12 l12">
-                <table class="highlight">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Especie</th>
-                            <th>Etapa</th>
-                            <th>Opciones</th>
-                        </tr>
-                    </thead>
-                   <MantenimientoTableCultivo listado={CULTIVOS}/>
-                </table>
-                </div>
-                </div>
+                        <div class="col s12 m12 l12">
+                        <MantenimientoTableEspecie listado={ESPECIES}/>
+                        </div>
+                    </div>
                 <div class="row">
                     <div  class="col s7 push-s5">
-                        <ModalRegistrarCultivo/>
-                        <button data-target="modal2" class="btn modal-trigger grey darken-3">Agregar<i class="material-icons right">add_box</i></button>
+                        <ModalRegistrarEspecie/>
+                        <button data-target="modal3" class="btn modal-trigger grey darken-3">Agregar<i class="material-icons right">add_box</i></button>
                     </div>              
                 </div>                
                 </div>
@@ -69,4 +58,4 @@ class MantenimientoCultivo extends React.Component {
     }
 }
 
-export default MantenimientoCultivo;
+export default MantenimientoEspecie;

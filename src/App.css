@@ -95,19 +95,6 @@ input{
     background-repeat: no-repeat;
 }
 
-label {
- 
-  text-align: left;
-  display: block;
-  margin: 0;
-
-  color: black;
-  font-weight: bold;
-  font-weight: 100;
-	font-size: 20px;
-  font-family: 'Times New Roman', Times, serif;
-  width: 250px;
-}
 textarea { /*Utilice la resizepropiedad para evitar áreas de texto sea reducida  ,barra de desplazamiento*/
   width: 70%;
   height: 100px;
@@ -623,4 +610,9 @@ button.delete {
   width: 100%;
   font-weight: bold;
   font-family: Poppins,Roboto,Helvetica Neue,Arial,sans-serif;
+}
+
+.Select{
+
+  z-index: 100;
 }

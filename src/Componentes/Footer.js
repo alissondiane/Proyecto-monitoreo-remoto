@@ -28,8 +28,9 @@ class Footer extends React.Component {
                             <h5 class="white-text">Enlaces</h5>
                             <ul>
                                 <li><a class="grey-text text-lighten-3" href="/Vista/inicio">Monitoreo</a></li>
-                                <li><a class="grey-text text-lighten-3" href="/Mantenimiento-Cultivo">Mantenimiento de Cultivos</a></li>
-                                <li><a class="grey-text text-lighten-3" href="/Mantenimiento-Cultivo">Mantenimiento de Especies</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/Historico-Cultivo">Histórico de cultivo</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/Mantenimiento-Estanque">Mantenimiento de Estanque</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/Mantenimiento-Cultivo">Mantenimiento de Cultivo</a></li>
                             </ul>
                         </div>
                     </div>
@@ -48,6 +49,4 @@ class Footer extends React.Component {
         )
     }
 }
-//<td className="td">{this.props.pago.idRec}</td>
-//<td className="td">{this.props.pago.alumno.idAlum}</td>
 export default Footer;

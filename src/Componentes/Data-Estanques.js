@@ -1,27 +1,27 @@
 const ESTANQUES = [
     {
         id: 1,
-        nombre: 'Estanque 1',
-        capacidad: '200litros',
-        especie: 'Trucha'
+        col1: 'Estanque 1',
+        col2: '200litros',
+        col3: 'Especie Trucha / Etapa: Alevines'
     },
     {
         id: 2,
-        nombre: 'Estanque 2',
-        capacidad: '500litros',
-        especie: 'Tilapia'
+        col1: 'Estanque 2',
+        col2: '500litros',
+        col3: 'Especie Trucha / Etapa: Juveniles'
     },
     {
         id: 3,
-        nombre: 'Estanque 3',
-        capacidad: '250litros',
-        especie: 'Paco'
+        col1: 'Estanque 3',
+        col2: '250litros',
+        col3: 'Especie Tilapia / Etapa: Reproductores'
     },
     {
         id: 4,
-        nombre: 'Estanque 4',
-        capacidad: '250litros',
-        especie: 'Gamitana'
+        col1: 'Estanque 4',
+        col2: '250litros',
+        col3: 'Especie Gamitana /Etapa: Juveniles'
     }
 ];
 
